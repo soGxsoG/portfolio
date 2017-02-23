@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from './Image';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 

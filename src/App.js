@@ -35,6 +35,9 @@ componentDidMount(){
 }
 
   render() {
+    if (!(this.state.data) || !(this.state.repos)){
+      return null;
+    }
     return (
         <div>
           {this.state.profile ?
