@@ -3,15 +3,19 @@ import './App.css';
 import load from './utils/load';
 import Profile from './components/Profile';
 import Projects from './components/Projects';
+import offlineData from './utils/offlineData';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data:null,
+      data:{
+        userName:'serpry'
+      },
       profile:null,
       repos:null,
-     userName:location.pathname.slice(1) //dev location 
+      userName:'serpry'
+      // userName:location.pathname.slice(1) //dev location 
       // userName:location.hostname.match(/\w+/)[0] // production 
     };
   }
@@ -32,6 +36,7 @@ class App extends Component {
   }
 componentDidMount(){
   this.loadData();
+
 }
 
   render() {

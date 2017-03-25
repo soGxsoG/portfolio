@@ -79,6 +79,8 @@ body{
   /*transition: background-color .4s,
               border-radius .4s;*/
   transition: box-shadow .5s;
+  display: flex;
+  align-items: center;
 }
 .project:hover{
   /*background-color: #929eb0;*/
@@ -97,35 +99,18 @@ body{
   font-weight: bold;
   font-size: 1.8rem;
   vertical-align: middle;
+  flex-basis: 50%;
 }
 /*.project__name::before{
   content: '|';
   display: inline-block;
   margin-right: 2px;
 }*/
-
-button.project__link-source, button.project__link-demo{
-  float: right;
-  box-sizing: border-box;
-  margin-top: 6px !important;
-  /*background-color: #58C9B9    ;*/
-  margin-left: 10px;
-
+.project__flex-item{
+  display: flex;
+  flex-direction: column;
 }
-.project__buttons{
-  /*display: inline-block;*/
-  float: right;
 
-
-}
-.project__buttons{
-  margin-top: 7px;
-  margin-right: 10px;
-}
-.project__description{
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-.hidden{
-  display: none;
+.project__flex-item:nth-of-type(1) > button{
+  margin-bottom: 2px;
 }
