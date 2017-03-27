@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Profile = (props)=>{
-    console.log(props.data.avatar_url);
+    // console.log(props.data.avatar_url);
     return(
         
         <div className="profile row">

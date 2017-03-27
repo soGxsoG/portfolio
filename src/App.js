@@ -3,7 +3,10 @@ import './App.css';
 import load from './utils/load';
 import Profile from './components/Profile';
 import Projects from './components/Projects';
-import offlineData from './utils/offlineData';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setUserName, fetchDataRepos, fetchDataProfile } from './actions/repos';
+// import offlineData from './utils/offlineData';
 
 class App extends Component {
   constructor(props){
@@ -19,6 +22,8 @@ class App extends Component {
       // userName:location.hostname.match(/\w+/)[0] // production 
     };
   }
+  
+
   // fetching data from API
   loadData(){
     load('./config/data.json') // JSON file for future features 
@@ -35,27 +40,42 @@ class App extends Component {
     })
   }
 componentDidMount(){
-  this.loadData();
+  this.props.fetchDataRepos(this.state.userName);
+  this.props.fetchDataProfile(this.state.userName);
+  console.log('store =>', this.props.repos);
 
 }
 
+
   render() {
-    if (!(this.state.data) || !(this.state.repos)){
-      return null;
-    }
+    console.log('store is =>',this.props.repos);
     return (
         <div>
-          {this.state.profile ?
-          <Profile profile={this.state.profile} data={this.state.data} />  :
-          null
+          
+          {this.props.repos.profile ?
+            <Profile profile={this.props.repos.profile} data={this.state.data} />  :
+            null
           }
-         {this.state.repos ?
-          <Projects repos={this.state.repos}/>:
-          null 
-         }
+          {this.props.repos.data ?
+            <Projects repos={this.props.repos.data}/>:
+            null 
+          }
         </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state,ownProps) =>{
+  return {
+    repos: state.repos
+  };
+};
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    setUserName:bindActionCreators(setUserName, dispatch),
+    fetchDataRepos:bindActionCreators(fetchDataRepos, dispatch),
+    fetchDataProfile:bindActionCreators(fetchDataProfile, dispatch)
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
