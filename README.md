@@ -1,17 +1,15 @@
 This is a React portfolio app.
 In this repo, you can find dev and production version.
 
-App based on creat-react-app package, so it is powerful development environment.
+Now this project is freeze for a couple weeks.
+What will be in the new release:
 
-If you want to use this app as the portfolio for your GitHub account, do this:
+1. Portfolio app was rewritten to React + Redux.
+2. 3 different views.
+3. New README.
 
-1. Clone files from master branch https://github.com/SerPry/portfolio.git into your new repo.
-
-2. Create gh-pages branch.
-
-3. In package.json file finds "homepage" field and changes it to your in "https://myusername.github.io/name-of-repo" format.
-
-4.  In command prompt run this "npm run deploy".
-
+If future plans:
+1. Full documentation for every component.
+2. Customization of profile data.
 Enjoy new portfolio app.
 

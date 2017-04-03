@@ -34,18 +34,18 @@ export function setUserName(name){
 }
 
 export const fetchDataRepos = (userName) => dispatch =>{
-    console.log('action =>', 'fetchData');
+    // console.log('action =>', 'fetchData');
     load(`https://api.github.com/users/${userName}/repos`)
         .then(res => {
-            console.log('res = ', res);
+            // console.log('res = ', res);
             dispatch({type:'FETCH_DATA_REPOS', data:res});
     });
 };
 export const fetchDataProfile = (userName) => dispatch =>{
-    console.log('action =>', 'fetchData');
+    // console.log('action =>', 'fetchData');
     load(`https://api.github.com/users/${userName}`)
         .then(res => {
-            console.log('res = ', res);
+            // console.log('res = ', res);
             dispatch({type:'FETCH_DATA_PROFILE', profile:res});
     });
 };

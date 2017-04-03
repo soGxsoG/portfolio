@@ -1,5 +1,5 @@
 const initialState={
-    userName:'',
+    userName:'serpry',
     data:null,
     profile:null
 }

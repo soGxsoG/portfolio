@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import './App.css';
 import load from './utils/load';
 import Profile from './components/Profile';
 import Projects from './components/Projects';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { setUserName, fetchDataRepos, fetchDataProfile } from './actions/repos';
 // import offlineData from './utils/offlineData';
 
@@ -42,13 +43,13 @@ class App extends Component {
 componentDidMount(){
   this.props.fetchDataRepos(this.state.userName);
   this.props.fetchDataProfile(this.state.userName);
-  console.log('store =>', this.props.repos);
+  // console.log('store =>', this.props.repos);
 
 }
 
 
   render() {
-    console.log('store is =>',this.props.repos);
+    // console.log('store is =>',this.props.repos);
     return (
         <div>
           
@@ -60,6 +61,7 @@ componentDidMount(){
             <Projects repos={this.props.repos.data}/>:
             null 
           }
+          <Link to='/board'>board</Link>
         </div>
     );
   }
