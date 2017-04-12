@@ -1,15 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Image from './Image';
 import { Button } from 'semantic-ui-react';
+import { Like, Fork } from './portfolioUI';
 
 
 
 const Project = (props)=>{
  
     return(
+        
         <div className="project clearfix" data-index={props.id}>
             <Image img={props.data.language} />
-            <span className="project__name">{props.data.name}</span>
+            <Link to={`/${props.data.name}`}><span className="project__name">{props.data.name}</span></Link>
             <div className='project__flex-item'>
                 {props.data.has_pages?
                 <Button inverted color='olive' className="project__link-source"><a target="_blank" href={`http://${props.data.owner.login}.github.io/${props.data.name}`}>Demo</a></Button> :
@@ -19,22 +22,12 @@ const Project = (props)=>{
             </div>
             
             <div className="project__buttons project__flex-item">
-            <Button
-                color='red'
-                content='Like'
-                icon='star'
-                label={{ basic: true, color:'red', pointing: 'left', content:props.data.watchers }}
-            />
-             <Button
-                basic
-                color='blue'
-                content='Fork'
-                icon='fork'
-                label={{ as: 'a', basic: true, color: 'blue', pointing: 'left', content: props.data.forks }}
-            />
+            <Like num={props.data.watchers} />
+            <Fork num={props.data.forks} />
             </div>
 
         </div>
+        
     )
 }
 

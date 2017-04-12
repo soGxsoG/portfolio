@@ -16,6 +16,10 @@ function repos(state=initialState, action){
             return {...state, profile:action.profile};
             break;
         }
+        case 'FETCH_OFFLINE_DATA':{
+            return{...state, data:action.data};
+            break;
+        }
 
 
         default: return state;

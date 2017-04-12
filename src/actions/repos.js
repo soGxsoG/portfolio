@@ -1,3 +1,6 @@
+import offlineData from '../utils/offlineData';
+
+
 export const load = (url)=> {
 
   return new Promise(function(resolve, reject) {
@@ -48,5 +51,10 @@ export const fetchDataProfile = (userName) => dispatch =>{
             // console.log('res = ', res);
             dispatch({type:'FETCH_DATA_PROFILE', profile:res});
     });
+};
+
+export const fetchOfflineData = () => dispatch =>{
+    // console.log('action =>', 'fetchData');
+            dispatch({type:'FETCH_OFFLINE_DATA', data:offlineData});
 };
 

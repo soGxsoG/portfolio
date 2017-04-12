@@ -12,19 +12,16 @@
 
 
 body{
-  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/cork-wallet.png);
+  /*background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/cork-wallet.png);*/
+  background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
 }
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
-  background-color:#929eb0;
+  /*background-color:#929eb0;*/
   height: 100px;
   padding: 20px;
   color: white;
@@ -51,12 +48,13 @@ body{
 }
 .profile__name{
   font-size: 2em;
-  background-color: #edeef0;
+  background-color: rgba(220, 66, 37, 0.15);
+  color: white;
   padding: 30px;
   padding-left: 50px;
   margin-left: -20px;
   z-index: 1;
-  border-radius:0 5px 5px 0;
+  border-radius:13px;
 }
 .profile__info{
   display: inline-block;
@@ -121,28 +119,99 @@ body{
   flex-wrap: wrap;
 }
 .board-single{
-  background-color: pink;
+  background-color: rgba(255, 255, 255, 1);
+  /*box-shadow: inset 0 0 5px 5px #fafafa;*/
   max-width: 300px;
-  width: 300px;
-  max-height: 300px;
-  margin-bottom: 10px;
+  min-width: 250px;
+  max-height: 400px;
+  min-height: 300px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 20px 5px;
+  position: relative;
+  /*padding: 20px 5px;*/
 
 }
 .board-single .project__img{
   margin-right: 0;
+  width: 80px; 
+  height: 80px;
+  flex-basis: 20%;
+  /*margin-bottom: 10px;*/
+
 }
-.board-single span:first-of-type{
+.board-single > a:first-of-type > span{
   margin: 10px 0;
   font-weight: bold;
+  color: black;
+  display: block;
+  font-size: 1.2em;
+
 }
-.board-single__num span{
+.board-single__num{
+  margin: 5px 0 ;
+}
+.board-single__num > span{
   width: 50%;
   min-width: 40px;
   text-align: center;
   display: inline-block;
+
+}
+
+
+.btn-like{
+  width: 90%;
+  min-width: 30px;
+  margin:0 auto;
+  border: 1px solid red;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(255,0,0,0.1);
+  font-size: 13px;
+}
+.btn-like .my-eye{
+  font-size: 13px;
+  margin-right: 2px;
+  color: rgba(255,0,0,0.8);
+  line-height: 22px;
+}
+.btn-fork{
+  width: 90%;
+  min-width: 30px;
+  margin:0 auto;
+  border: 1px solid blue;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(0,0,255,0.1);
+  font-size: 13px;
+}
+.btn-fork .my-code-fork{
+  font-size: 13px;
+  margin-right: 2px;
+  color: rgba(0,0,255,0.8);
+  line-height: 22px;
+}
+.board-single__btn{
+  background-color: rgba(247, 247, 247, 0.7);
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  line-height: 50px;
+}
+.board-single__btn a{
+  color: black;
+  width: 50%;
+  display: inline-block;
+  border: 1px solid rgba(247, 247, 247, 1);
+  cursor: pointer;
+}
+.board-single__btn a:hover{
+  text-decoration: none;
+  background-color: rgba(220, 66, 37, 0.5);
+  transition:  background-color 0.3s;
 }

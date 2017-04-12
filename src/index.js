@@ -8,7 +8,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import SingleRepo from './components/SingleRepo';
-import Board from './components/Board';
 import reducer from './reducers';
 
 
@@ -21,8 +20,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App} />
-      <Route path='/board' component={Board} />
-      <Route path='/repo/:repoId' component={SingleRepo} />
+      <Route path='/:repoId' component={SingleRepo} />
     </Router> 
   </Provider>,
 
