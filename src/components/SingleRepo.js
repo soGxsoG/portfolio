@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const SingleRepo = (props) =>{
     if (!props.repo){
-        location.href='http://localhost:3000';
+        // location.href='https://serpry.github.io/portfolio';
     }else{
         var singleRepo = props.repo.filter(repo=> repo.name === props.ownProps.params.repoId);
         console.info(singleRepo);
