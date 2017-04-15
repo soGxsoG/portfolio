@@ -17,9 +17,9 @@ class App extends Component {
         userName:'serpry'
       },
       view:'board',
-      // userName:'serpry'
+      userName:'serpry',
       // userName:location.pathname.slice(1) //dev location 
-      userName:location.hostname.match(/\w+/)[0] // production 
+      // userName:location.hostname.match(/\w+/)[0] // production 
     };
   }
   

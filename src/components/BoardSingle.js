@@ -16,7 +16,11 @@ const BoardSingle = (props) =>{
         <span><Fork num={props.data.watchers_count} /></span>
         </div>
         <div className="board-single__btn">
-        <a>Demo</a>
+        {
+            props.data.has_pages ?
+            <a href={`https://${props.data.owner.login}.github.io/${props.data.name}`} target="_blank">Demo</a>:
+            null
+        }
         <a href={props.data.html_url} >Source</a>
         </div>
 
