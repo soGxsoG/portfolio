@@ -17,7 +17,7 @@ class App extends Component {
         userName:'serpry'
       },
       view:'lines',
-      userName:'serpry',
+      userName:'serpry', // in dev put here your profile name
       // userName:location.hostname.match(/\w+/)[0] // production 
     };
     this._setView = this._setView.bind(this);

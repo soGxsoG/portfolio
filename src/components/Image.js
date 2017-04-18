@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Image = (props)=>{
-
+// pay attention to this 2 lines !!!
    let url = process.env.PUBLIC_URL+'/langs/'+props.img+'.png'; // dev
 //    let url = process.env.PUBLIC_URL+'/langs/'+props.img.toLowerCase()+'.png'; // product
 
