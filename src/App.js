@@ -16,18 +16,32 @@ class App extends Component {
       data:{
         userName:'serpry'
       },
-      view:'board',
+      view:'lines',
       userName:'serpry',
-      // userName:location.pathname.slice(1) //dev location 
       // userName:location.hostname.match(/\w+/)[0] // production 
     };
+    this._setView = this._setView.bind(this);
   }
-  
+  _setView(view){
+    this.setState({view});
+  }
+  // updateDimensions(){
+  //   var w = window,
+  //       d = document,
+  //       documentElement = d.documentElement,
+  //       body = d.getElementsByTagName('body')[0],
+  //       width = w.innerWidth || documentElement.clientWidth || body.clientWidth;
+  //       console.log(this === window);
+  //   if(width<450){
+  //     (()=>{_setBoard()})()
+  //   }
+  // }
 
 componentDidMount(){
   // fetching data from API
   this.props.fetchDataRepos(this.state.userName);
   this.props.fetchDataProfile(this.state.userName);
+  // window.addEventListener("resize", this.updateDimensions);
     //  this.props.fetchOfflineData();
   // console.log('store =>', this.props.repos);
 
@@ -39,7 +53,7 @@ componentDidMount(){
     return (
         <div>
           {this.props.repos.profile ?
-            <Profile profile={this.props.repos.profile} data={this.state.data} />  :
+            <Profile profile={this.props.repos.profile} data={this.state.data} view={this._setView} />  :
             null
           }
           {this.props.repos.data && this.state.view === 'lines' ?

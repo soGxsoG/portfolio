@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Image from './Image';
 import { Button } from 'semantic-ui-react';
 import { Like, Fork } from './portfolioUI';
+import { baseRoot } from '../utils/const';
 
 
 
@@ -12,13 +13,13 @@ const Project = (props)=>{
         
         <div className="project clearfix" data-index={props.id}>
             <Image img={props.data.language} />
-            <Link to={`/${props.data.name}`}><span className="project__name">{props.data.name}</span></Link>
-            <div className='project__flex-item'>
+            <div className='project__flex-item project__flex-item__name'><Link className='project__name' to={`${baseRoot}/${props.data.name}`}>{props.data.name}</Link></div>
+            <div className='project__flex-item project__flex-item__links'>
                 {props.data.has_pages?
-                <Button inverted color='olive' className="project__link-source"><a target="_blank" href={`http://${props.data.owner.login}.github.io/${props.data.name}`}>Demo</a></Button> :
+                <a target="_blank" href={`http://${props.data.owner.login}.github.io/${props.data.name}`}>Demo</a> :
                 null
                 }
-                <Button inverted color='olive' className="project__link-demo"><a target="_black" href={props.data.html_url}>Source</a></Button>
+                <a target="_black" href={props.data.html_url}>Source</a>
             </div>
             
             <div className="project__buttons project__flex-item">

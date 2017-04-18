@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { baseRoot } from './utils/const.js';
 import App from './App';
 import SingleRepo from './components/SingleRepo';
 import reducer from './reducers';
@@ -19,8 +20,8 @@ const history = syncHistoryWithStore(browserHistory,store);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={App} />
-      <Route path='/:repoId' component={SingleRepo} />
+      <Route path={`${baseRoot}`} component={App} />
+      <Route path={`${baseRoot}/:repoId`} component={SingleRepo} />
     </Router> 
   </Provider>,
 
