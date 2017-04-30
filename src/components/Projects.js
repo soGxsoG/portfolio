@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Project from './Project';
 
 
@@ -17,6 +19,8 @@ class Projects extends React.Component{
     }
 }
 
-
+Projects.propTypes={
+    repos:PropTypes.array.isRequired
+}
 
 export default Projects;

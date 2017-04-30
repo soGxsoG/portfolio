@@ -258,6 +258,42 @@ body{
   background-color: rgba(220, 66, 37, 0.5);
   transition:  background-color 0.3s;
 }
+.single-repo{
+  color: white;
+  width: 90%;
+  margin:0 auto;
+  position: relative;
+}
+.repo-profile{
+  width: 100%;
+  background: pink;
+}
+.repo-profile div{
+  display: inline-block;
+  vertical-align: middle;
+}
+.repo-profile div:not(:last-of-type){
+  margin-right: 20px;
+}
+.repo-profile__avatar img{
+  width: 100px;
+  height: 100px;
+}
+.repo-profile__name{
+  font-size: 2em;
+}
+.repo-profile-profile-btn a {
+  color:white;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top:0;
+  bottom: 0;
+  vertical-align: middle;
+
+}
+
+/* MEDIA QUERIES   */
 
 @media only screen and (max-width : 1010px){
   .navigation{

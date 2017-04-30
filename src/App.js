@@ -17,9 +17,10 @@ class App extends Component {
         userName:'serpry'
       },
       view:'lines',
-      userName:'serpry', // in dev put here your profile name
-      // userName:location.hostname.match(/\w+/)[0] // production 
+      userName: process.env.NODE_ENV=== 'development' ? 'serpry' : location.hostname.match(/\w+/)[0] // production 
+ // in dev put here your profile name
     };
+   
     this._setView = this._setView.bind(this);
   }
   _setView(view){
@@ -49,9 +50,10 @@ componentDidMount(){
 
 
   render() {
-    // console.log('store is =>',this.props.repos);
+    console.log(process.env.NODE_ENV);
     return (
         <div>
+
           {this.props.repos.profile ?
             <Profile profile={this.props.repos.profile} data={this.state.data} view={this._setView} />  :
             null

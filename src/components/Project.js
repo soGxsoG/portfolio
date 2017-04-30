@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
+
 import Image from './Image';
 import { Button } from 'semantic-ui-react';
 import { Like, Fork } from './portfolioUI';
@@ -30,6 +32,10 @@ const Project = (props)=>{
         </div>
         
     )
+}
+
+Project.propTypes={
+    data:PropTypes.object.isRequired
 }
 
 export default Project;

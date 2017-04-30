@@ -1,17 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 const Image = (props)=>{
-// pay attention to this 2 lines !!!
-   let url = process.env.PUBLIC_URL+'/langs/'+props.img+'.png'; // dev
-//    let url = process.env.PUBLIC_URL+'/langs/'+props.img.toLowerCase()+'.png'; // product
-
-    if (props.img === 'null'){
-        url = process.env.PUBLIC_URL+'/langs/null.png';
-    }
+    let url;
+if (process.env.NODE_ENV=== 'development'){
+    url = process.env.PUBLIC_URL+'/langs/'+props.img+'.png';
+}else{
+    url = process.env.PUBLIC_URL+'/langs/'+props.img.toLowerCase()+'.png'; 
+}
     return(
         <img className="project__img" src={url} alt="project" />
     );
+}
+
+Image.propTypes ={
+    img:PropTypes.string.isRequired
 }
 
 export default Image;

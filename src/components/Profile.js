@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Profile = (props)=>{
     // console.log(props.data.avatar_url);
@@ -26,13 +27,11 @@ const Profile = (props)=>{
                     <i className="fa fa-list active" onClick={_updateToLines} aria-hidden='true'></i>
                 </div>
             </div>
-            {/*<div className="profile__info col-md-6 col-lg-6 col-sm-12">
-                <span className="profile__info-email">{props.profile.email}</span>
-                <span className="profile__info-location">{props.profile.location}</span>
-                <p className="profile__info-bio">{props.profile.bio}</p>
-            </div>*/}
         </div>
     );
 }
 
+Profile.propTypes = {
+    profile:PropTypes.object.isRequired
+}
 export default Profile;
