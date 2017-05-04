@@ -20,7 +20,7 @@ function repos(state=initialState, action){
             return{...state, data:action.data};
             break;
         }
-
+      
 
         default: return state;
     }

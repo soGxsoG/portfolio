@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './App.css';
-import Profile from './components/Profile';
-import Projects from './components/Projects';
-import Board from './components/Board';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import Board from './components/Board';
+import Projects from './components/Projects';
+import Profile from './components/Profile';
 import { setUserName, fetchDataRepos, fetchDataProfile, fetchOfflineData } from './actions/repos';
+import { devUserName } from './utils/const'
 // import offlineData from './utils/offlineData';
 
 class App extends Component {
@@ -17,7 +19,7 @@ class App extends Component {
         userName:'serpry'
       },
       view:'lines',
-      userName: process.env.NODE_ENV=== 'development' ? 'serpry' : location.hostname.match(/\w+/)[0] // production 
+      userName: process.env.NODE_ENV=== 'development' ? devUserName : location.hostname.match(/\w+/)[0] // production 
  // in dev put here your profile name
     };
    

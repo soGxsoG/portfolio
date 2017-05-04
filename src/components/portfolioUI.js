@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 
@@ -10,6 +11,11 @@ export const Like = (props) =>{
         </div>
     )
 }
+Like.propTypes = {
+    num:PropTypes.number.isRequired
+}
+
+
 
 export const Fork = (props) =>{
     return (
@@ -18,4 +24,7 @@ export const Fork = (props) =>{
         {props.num}
         </div>
     )
+}
+Fork.propTypes = {
+    num:PropTypes.number.isRequired
 }
