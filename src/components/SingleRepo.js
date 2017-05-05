@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 
 import Profile from './Profile';
@@ -9,13 +10,16 @@ import { load } from '../actions/repos';
 import { baseRoot, devUserName } from '../utils/const.js';
 
 const SingleRepo = (props) =>{
-    if ((!props.repo) || (!props.profile) ){
+    const backDoor = () =>{
         if (process.env.NODE_ENV=== 'development'){
-            location.href=`http://localhost:3000/${baseRoot}`;
+            return `http://localhost:3000/${baseRoot}`;
 
         }else{
-            location.href=`https://${location.hostname.match(/\w+/)[0]}.github.io/${baseRoot}`;
+            return `https://${location.hostname.match(/\w+/)[0]}.github.io/${baseRoot}`;
         }
+    }
+    if ((!props.repo) || (!props.profile) ){
+        location.href = backDoor();
     }else{
         var singleRepo = props.repo.filter(repo=> repo.name === props.ownProps.params.repoId)[0];
         console.info(singleRepo);
@@ -28,7 +32,7 @@ const SingleRepo = (props) =>{
                 <div className="repo-profile__name">{props.profile.name}</div>
                 <div className="repo-profile__btns">
                     <div className="repo-profile-profile-btn"><a href={`https://github.com/${props.profile.login}`} target="_blank">GitHub</a></div>
-                    <div className="repo-profile__back-btn">Back</div>
+                    <div className="repo-profile__back-btn"><Link to={backDoor()} >Back</Link></div>
                 </div>
             </div>
             <div className="row">
