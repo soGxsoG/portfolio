@@ -1,17 +1,21 @@
-This is a React portfolio app.
-In this repo, you can find dev and production version.
+# This is a React portfolio app _(beta)_.
+#### In this repo, you can find dev and production version.
 
-What will be in the new release:
+###### What do you get :
 
-1. Portfolio app was rewritten to React + Redux.(done)
-2. 3 different views. (2 of 3)
-3. New README. (in progress)
-
-If future plans:
-1. Full documentation for every component. (some custom UI components)
-2. Customization of profile data. 
+* App with all your repos.
+* Different views for deeper understanding of each repo. 
 
 
+###### If future plans:
+* README for **developers**
+* Full documentation for every component. (some custom UI components)
+* Customization of profile data _(etc...)_ 
 
-Enjoy new portfolio app.
+## :heavy_exclamation_mark: To deploy this app to your profile do :
+* Fork this [gh-pages](https://github.com/SerPry/portfolio/tree/gh-pages)
+* Make sure that you have not _**portfolio**_ repo. Otherwise in _settings_ change name of the repo.
+* Make some **commit** (GitHub requires this for _rebuiding_ gh-pages)
 
+
+#### :boom: Enjoy new portfolio app. :boom:
