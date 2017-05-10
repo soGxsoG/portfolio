@@ -21,9 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path={`${baseRoot}`} component={App} />
-      <Route path={`${baseRoot}/:repoId`} component={SingleRepo} />
     </Router> 
   </Provider>,
-
   document.getElementById('root')
 );

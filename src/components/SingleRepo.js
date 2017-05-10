@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
 
 
 import Profile from './Profile';
 import Image from './Image';
 import { Like, Fork } from './portfolioUI';
 import { load } from '../actions/repos';
-import { baseRoot, devUserName } from '../utils/const.js';
+import { baseRoot ,devUserName } from '../utils/const.js';
+import { updateSingleRepo } from '../actions/repos.js';  
 
 const SingleRepo = (props) =>{
-    const backDoor = () =>{
-        if (process.env.NODE_ENV=== 'development'){
-            return `http://localhost:3000/${baseRoot}`;
-
-        }else{
-            return `https://${location.hostname.match(/\w+/)[0]}.github.io/${baseRoot}`;
-        }
-    }
-    if ((!props.repo) || (!props.profile) ){
-        location.href = backDoor();
-    }else{
-        var singleRepo = props.repo.filter(repo=> repo.name === props.ownProps.params.repoId)[0];
-        console.info(singleRepo);
-    }
+    const escapeFromSingleRepo = () => props.updateSingleRepo(null);
+    var singleRepo = props.repo.filter(repo=> repo.id === props.singleRepoId)[0];
 
     return(
         <div className="single-repo">
@@ -32,7 +22,7 @@ const SingleRepo = (props) =>{
                 <div className="repo-profile__name">{props.profile.name}</div>
                 <div className="repo-profile__btns">
                     <div className="repo-profile-profile-btn"><a href={`https://github.com/${props.profile.login}`} target="_blank">GitHub</a></div>
-                    <div className="repo-profile__back-btn"><Link to={backDoor()} >Back</Link></div>
+                    <div className="repo-profile__back-btn" onClick={escapeFromSingleRepo}>Back</div>
                 </div>
             </div>
             <div className="row">
@@ -71,8 +61,15 @@ const mapStateToProps = (state, ownProps)=>{
     return{
         repo:state.repos.data,
         ownProps,
-        profile:state.repos.profile
+        profile:state.repos.profile,
+        vars:state.repos.vars,
+        singleRepoId:state.repos.singleRepo
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        updateSingleRepo:bindActionCreators(updateSingleRepo, dispatch),
     }
 }
 
-export default connect(mapStateToProps)(SingleRepo);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleRepo);

@@ -59,3 +59,10 @@ export const fetchOfflineData = () => dispatch =>{
             dispatch({type:'FETCH_OFFLINE_DATA', data:offlineData});
 };
 
+export const updateProps = (vars) => dispatch =>{
+    dispatch({type:'UPDATE_PROPS', vars});
+}
+
+export const updateSingleRepo = (id) => dispatch =>{
+    dispatch({type:'UPDATE_SINGLEREPO', singleRepo:id});
+}

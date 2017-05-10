@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 import Board from './components/Board';
 import Projects from './components/Projects';
 import Profile from './components/Profile';
-import { setUserName, fetchDataRepos, fetchDataProfile, fetchOfflineData } from './actions/repos';
-import { devUserName } from './utils/const'
+import SingleRepo from './components/SingleRepo';
+import {fetchDataRepos, fetchDataProfile, fetchOfflineData, updateProps, updateSingleRepo } from './actions/repos';
+import { devUserName, baseRoot } from './utils/const';
 // import offlineData from './utils/offlineData';
 
 class App extends Component {
@@ -19,51 +20,50 @@ class App extends Component {
         userName:'serpry'
       },
       view:'lines',
-      userName: process.env.NODE_ENV=== 'development' ? devUserName : location.hostname.match(/\w+/)[0] // production 
+      userName: process.env.NODE_ENV=== 'development' ? devUserName : location.hostname.match(/\w+/)[0],
+      repoURL: process.env.NODE_ENV=== 'development' ? baseRoot : location.hostname.match(/\w+/)[4]
  // in dev put here your profile name
     };
    
     this._setView = this._setView.bind(this);
+    this._setSingleRepo = this._setSingleRepo.bind(this);
   }
-  _setView(view){
+
+_setView(view){
     this.setState({view});
   }
-  // updateDimensions(){
-  //   var w = window,
-  //       d = document,
-  //       documentElement = d.documentElement,
-  //       body = d.getElementsByTagName('body')[0],
-  //       width = w.innerWidth || documentElement.clientWidth || body.clientWidth;
-  //       console.log(this === window);
-  //   if(width<450){
-  //     (()=>{_setBoard()})()
-  //   }
-  // }
 
+_setSingleRepo(id){
+  this.setState({sigleRepo:id});
+} 
 componentDidMount(){
   // fetching data from API
   this.props.fetchDataRepos(this.state.userName);
   this.props.fetchDataProfile(this.state.userName);
-  // window.addEventListener("resize", this.updateDimensions);
-    //  this.props.fetchOfflineData();
-  // console.log('store =>', this.props.repos);
+  this.props.updateProps({repoURL:this.state.repoURL});
 
 }
 
 
   render() {
-    console.log(process.env.NODE_ENV);
+    if (!this.props.repos.data){
+      return null;
+    }
     return (
         <div>
 
-          {this.props.repos.profile ?
+          {this.props.repos.profile && !this.props.singleRepo ?
             <Profile profile={this.props.repos.profile} data={this.state.data} view={this._setView} />  :
             null
           }
-          {this.props.repos.data && this.state.view === 'lines' ?
-            <Projects repos={this.props.repos.data}/>:
-            this.props.repos.data ?
-            <Board/>:
+          {!this.props.singleRepo  && this.state.view === 'lines' ?
+              <Projects repos={this.props.repos.data} updateSingleRepo={this.props.updateSingleRepo}/>:
+              !this.props.singleRepo ?
+                <Board/>:
+                null
+          }
+          {this.props.singleRepo ?
+            <SingleRepo/>:
             null
           }
         </div>
@@ -73,15 +73,17 @@ componentDidMount(){
 
 const mapStateToProps = (state,ownProps) =>{
   return {
-    repos: state.repos
+    repos: state.repos,
+    singleRepo:state.repos.singleRepo
   };
 };
 const mapDispatchToProps = (dispatch) =>{
   return{
-    setUserName:bindActionCreators(setUserName, dispatch),
     fetchDataRepos:bindActionCreators(fetchDataRepos, dispatch),
     fetchDataProfile:bindActionCreators(fetchDataProfile, dispatch),
-    fetchOfflineData:bindActionCreators(fetchOfflineData, dispatch)
+    fetchOfflineData:bindActionCreators(fetchOfflineData, dispatch),
+    updateProps:bindActionCreators(updateProps, dispatch),
+    updateSingleRepo:bindActionCreators(updateSingleRepo, dispatch)
   }
 }
 

@@ -8,10 +8,11 @@ import { baseRoot } from '../utils/const.js';
 
 
 const BoardSingle = (props) =>{
+    const goTo = () => props.updateSingleRepo(props.data.id);
     return(
         <div className="board-single">
             <Image img={props.img}/>
-            <Link to={`${baseRoot}/${props.data.name}`}><span>{props.data.name}</span></Link>
+            <div  onClick={goTo} ><span>{props.data.name}</span></div>
         <div className="board-single__num">
             <span><Like num={props.data.watchers_count} /></span>
             <span><Fork num={props.data.watchers_count} /></span>

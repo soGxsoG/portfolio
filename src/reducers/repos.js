@@ -1,7 +1,9 @@
 const initialState={
     userName:'serpry',
     data:null,
-    profile:null
+    profile:null,
+    vars:null,
+    singleRepo:null,
 }
 
 
@@ -19,6 +21,15 @@ function repos(state=initialState, action){
         case 'FETCH_OFFLINE_DATA':{
             return{...state, data:action.data};
             break;
+        }
+        case 'UPDATE_PROPS':{
+            return {...state, vars:action.vars};
+            break;
+        }
+        case 'UPDATE_SINGLEREPO':{
+            return {... state, singleRepo:action.singleRepo};
+            break;
+
         }
       
 

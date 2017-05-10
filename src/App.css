@@ -180,7 +180,7 @@ body{
   /*margin-bottom: 10px;*/
 
 }
-.board-single > a:first-of-type > span{
+.board-single > span:first-of-type > span{
   margin: 10px 0;
   font-weight: bold;
   color: black;
